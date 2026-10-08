@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Park And Go Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <div class="animated-background">
+    <div class="highway">
+      <div class="road-lane reverse">
+        <div class="car-container backward lane-1"><div class="car-bob"><i class="fas fa-truck car-icon"></i></div></div>
+      </div>
+      <div class="road-lane">
+        <div class="car-container forward lane-2"><div class="car-bob"><i class="fas fa-car car-icon"></i></div></div>
+      </div>
+      <div class="road-lane reverse">
+        <div class="car-container backward lane-3"><div class="car-bob"><i class="fas fa-motorcycle car-icon"></i></div></div>
+      </div>
+      <div class="road-lane">
+        <div class="car-container forward lane-4"><div class="car-bob"><i class="fas fa-car-side car-icon"></i></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="global-loader" class="loader-overlay">
+    <div class="spinner"><i class="fas fa-circle-notch fa-spin fa-3x"></i></div>
+  </div>
+  <div id="popup" class="popup-msg"></div>
+
+  <div class="auth-wrapper">
+    <div id="container" class="auth-card">
+      
+      <div class="brand-title-container">
+        <h1 class="main-brand">Park <span class="highlight">And</span> Go</h1>
+        <p class="sub-brand">Parking Slot Booking Portal</p>
+      </div>
+      
+      <div class="form-container sign-in-container">
+        <div class="auth-header">
+          <h2>Welcome Back!</h2>
+          <p>Sign in to access your parking dashboard.</p>
+        </div>
+        
+        <form id="login-form">
+          <div class="input-group">
+            <label>Email Address</label>
+            <div class="input-wrapper">
+              <i class="fas fa-envelope icon"></i>
+              <input type="email" id="login-email" placeholder="Enter your email" required>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label>Password</label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock icon"></i>
+              <input type="password" id="login-password" placeholder="Enter your password" required>
+              <span class="toggle-pwd" onclick="window.togglePassword('login-password', this)">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+          </div>
+          
+          <a href="#" id="forgot-password" class="forgot-link">Forgot your password?</a>
+          <button type="submit" id="btn-login" class="btn-auth">Sign In</button>
+        </form>
+        
+        <div class="auth-footer">
+          <p>New to the system? <a href="#" id="signUp" class="switch-link">Create an Account</a></p>
+        </div>
+      </div>
+
+      <div class="form-container sign-up-container">
+        <div class="auth-header" style="padding-bottom: 10px;">
+          <h2>Create Account</h2>
+          <p>Register to book slots and manage your vehicles.</p>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-step active" data-step="1"><i class="fas fa-user"></i></div>
+          <div class="progress-step" data-step="2"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="progress-step" data-step="3"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        
+        <form id="signup-form">
+          <div class="form-step active" id="step-1">
+            <h4 class="section-title">Step 1: Personal Details</h4>
+            <div class="auth-grid">
+              <div class="input-group"><label>First Name</label><input type="text" id="reg-fname" required></div>
+              <div class="input-group"><label>Last Name</label><input type="text" id="reg-lname" required></div>
+              <div class="input-group"><label>Date of Birth</label><input type="date" id="reg-dob" required></div>
+              <div class="input-group"><label>Mobile Number</label><input type="tel" id="reg-mobile" required></div>
+              <div class="input-group" style="grid-column: 1 / -1;"><label>Aadhaar Number</label><input type="text" id="reg-aadhaar" required></div>
+              <div class="input-group" style="grid-column: 1 / -1;"><label>Vehicle Number (Optional)</label><input type="text" id="reg-vehicle" style="text-transform: uppercase;"></div>
+            </div>
+            <button type="button" class="btn-auth btn-next" style="margin-top: 15px;">Next Step <i class="fas fa-arrow-right"></i></button>
+          </div>
+
+          <div class="form-step" id="step-2">
+            <h4 class="section-title">Step 2: Address</h4>
+            <div class="auth-grid">
+              <div class="input-group"><label>State</label><input type="text" id="reg-state" value="Andhra Pradesh" required></div>
+              <div class="input-group"><label>District</label><input type="text" id="reg-district" required></div>
+              <div class="input-group"><label>Village/City</label><input type="text" id="reg-village" required></div>
+              <div class="input-group"><label>Pincode</label><input type="text" id="reg-pincode" required></div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+              <button type="button" class="btn-auth btn-back" style="background: #94a3b8; flex: 1;"><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="button" class="btn-auth btn-next" style="flex: 2;">Next Step <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <div class="form-step" id="step-3">
+            <h4 class="section-title">Step 3: Account Security</h4>
+            <div class="auth-grid">
+              <div class="input-group" style="grid-column: 1 / -1;"><label>Email Address</label><input type="email" id="reg-email" required></div>
+              <div class="input-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                  <input type="password" id="reg-password" required>
+                  <span class="toggle-pwd" onclick="window.togglePassword('reg-password', this)"><i class="fas fa-eye"></i></span>
+                </div>
+              </div>
+              <div class="input-group">
+                <label>Confirm Password</label>
+                <div class="input-wrapper">
+                  <input type="password" id="reg-confirm" required>
+                  <span class="toggle-pwd" onclick="window.togglePassword('reg-confirm', this)"><i class="fas fa-eye"></i></span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+              <button type="button" class="btn-auth btn-back" style="background: #94a3b8; flex: 1;"><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="submit" id="btn-signup" class="btn-auth" style="background: var(--primary-green); flex: 2;"><i class="fas fa-check-circle"></i> Create Account</button>
+            </div>
+          </div>
+        </form>
+        
+        <div class="auth-footer">
+          <p>Already have an account? <a href="#" id="signIn" class="switch-link">Sign In Here</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

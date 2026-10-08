@@ -1,0 +1,149 @@
+/* css/profile-settings.css */
+
+/* 1. Form Container Styling */
+.form-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px; /* Ensures space at the bottom for scrolling */
+    overflow: hidden;
+    border-top: 5px solid var(--primary-blue);
+}
+
+/* Specific border for Manager form */
+#manager-profile-form {
+    border-top: 5px solid #10b981; 
+}
+
+.card-header {
+    background: #f8fafc;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.card-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+/* 2. Grid Layout System */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* 3. Input Group Styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-gray);
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(30, 79, 115, 0.1);
+}
+
+/* Read-only / Locked fields */
+.input-group input[readonly] {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+}
+
+/* 4. Status Messages & Loaders */
+.status-msg {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+
+.status-msg.success {
+    display: block;
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.status-msg.error {
+    display: block;
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+/* 5. Animations */
+.animate-slide-up {
+    animation: profileSlideUp 0.5s ease-out forwards;
+}
+
+@keyframes profileSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 6. Mobile Responsiveness */
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr; /* Stacks inputs vertically on phones */
+        gap: 15px;
+    }
+
+    .card-body {
+        padding: 20px; /* Slightly less padding on mobile */
+    }
+
+    .form-card {
+        margin-bottom: 80px; /* Extra space on mobile to clear bottom navigation if any */
+    }
+}
+/* --- NATIVE SCROLL FIX --- */
+
+/* 1. Remove the flexbox crushing effect so the container measures height properly */
+.content-area {
+    display: block !important; 
+    overflow-y: auto !important;
+    padding-bottom: 50px !important; 
+}
+
+/* 2. Prevent the card from shrinking and ensure it fully wraps the inputs */
+.form-card {
+    flex-shrink: 0;
+    height: auto !important;
+    min-height: min-content;
+    overflow: visible !important; 
+    margin-bottom: 40px !important;
+}

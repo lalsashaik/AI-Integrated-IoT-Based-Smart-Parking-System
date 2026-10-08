@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Users - Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/history.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/manage-wallets.css">
+  <style>
+    .results-badge { background: #e0f2fe; color: #1e4f73; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
+    .directory-container { max-height: 550px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <div class="main-content">
+    <div id="topbar-container"></div>
+    <div class="content-area">
+      <div class="welcome-section">
+        <h2>User Directory & Management</h2>
+        <p>Primarily displaying all registered users. Use the filter to search and modify details.</p>
+      </div>
+
+      <div class="admin-recharge-box" style="margin-bottom: 30px;">
+        <div class="search-section">
+          <label class="section-label">Live Directory Filter</label>
+          <div class="search-bar-wrapper">
+            <i class="fas fa-filter search-icon"></i>
+            <input type="text" id="user-directory-filter" placeholder="Filter by name, vehicle, or email...">
+            <span class="results-badge" id="results-count">0 Users Loaded</span>
+          </div>
+        </div>
+
+        <div class="directory-container">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Account Info</th>
+                  <th>Vehicle/Aadhaar</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dir-results-tbody">
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="edit-user-section" class="hidden animate-slide-up">
+        <div class="form-card" style="border-left-color: #f59e0b;">
+          <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h3><i class="fas fa-user-edit"></i> Edit User: <span id="editing-user-display"></span></h3>
+            <button class="btn-close" id="btn-close-edit"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="card-body">
+            <form id="admin-edit-form">
+              <div class="grid-2">
+                <div class="input-group"><label>First Name</label><input type="text" id="edit-fname" required></div>
+                <div class="input-group"><label>Last Name</label><input type="text" id="edit-lname" required></div>
+                <div class="input-group"><label>Mobile</label><input type="tel" id="edit-mobile" required></div>
+                <div class="input-group"><label>Date of Birth</label><input type="date" id="edit-dob" required></div>
+                <div class="input-group"><label>Aadhaar</label><input type="text" id="edit-aadhaar" required></div>
+                <div class="input-group"><label>Vehicle No</label><input type="text" id="edit-vehicle" required style="text-transform: uppercase;"></div>
+              </div>
+              <h4 style="margin: 25px 0 15px; color: #1e4f73; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Address Details</h4>
+              <div class="grid-2">
+                <div class="input-group"><label>State</label><input type="text" id="edit-state" required></div>
+                <div class="input-group"><label>District</label><input type="text" id="edit-district" required></div>
+                <div class="input-group"><label>Village/City</label><input type="text" id="edit-village" required></div>
+                <div class="input-group"><label>Pincode</label><input type="text" id="edit-pincode" required></div>
+              </div>
+              <div class="form-actions" style="margin-top: 25px;">
+                <button type="submit" class="btn-save" style="background: #f59e0b;"><i class="fas fa-save"></i> Save System Updates</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="overflow-notification" class="overflow-msg"></div>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/manage-users.js"></script>
+</body>
+</html>

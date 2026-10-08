@@ -1,0 +1,153 @@
+/* css/manage-managers.css */
+
+/* Isolated Wrapper */
+#manager-portal-wrapper {
+    width: 100%;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Directory Card Styles */
+#manager-portal-wrapper .mgmt-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid #1e4f73;
+    margin-top: 15px;
+}
+
+#manager-portal-wrapper .mgmt-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Form Grid System */
+#manager-portal-wrapper .mgmt-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #manager-portal-wrapper .mgmt-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #manager-portal-wrapper .mgmt-modal {
+        width: 95% !important;
+        padding: 20px !important;
+    }
+}
+
+/* Modal Overlay */
+#manager-portal-wrapper .mgmt-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+#manager-portal-wrapper .mgmt-modal {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.mgmt-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+#manager-portal-wrapper .sub-title {
+    color: #1e4f73;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+    margin: 20px 0 15px;
+    font-size: 1.1rem;
+}
+
+#manager-portal-wrapper .field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+#manager-portal-wrapper .field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+#manager-portal-wrapper .field input:focus {
+    border-color: #1e4f73;
+    box-shadow: 0 0 0 3px rgba(30, 79, 115, 0.1);
+    outline: none;
+}
+
+/* Buttons */
+#manager-portal-wrapper .btn-primary-action {
+    background: #1e4f73;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#manager-portal-wrapper .submit-full-btn {
+    width: 100%;
+    padding: 15px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#manager-portal-wrapper .close-overlay {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+#manager-portal-wrapper .btn-view {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- OVERLAY VISIBILITY FIX --- */
+#manager-portal-wrapper .hidden,
+#manager-portal-wrapper .mgmt-overlay.hidden {
+    display: none !important;
+}

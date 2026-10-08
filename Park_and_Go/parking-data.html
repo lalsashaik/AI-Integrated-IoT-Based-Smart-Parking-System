@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Movement Log - Park And GO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/parking-data.css">
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <div class="main-content">
+        <div id="topbar-container"></div>
+        <div class="content-area">
+            
+            <div class="welcome-section" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2>Vehicle Movement Log</h2>
+                    <p>Track all entries, exits, and financial transactions.</p>
+                </div>
+                <button id="btn-refresh" class="btn-primary-outline"><i class="fas fa-sync-alt"></i> Refresh Log</button>
+            </div>
+
+            <div class="controls-card">
+                <div class="control-group search-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search Vehicle No or Booking ID...">
+                </div>
+                
+                <div class="filter-wrapper">
+                    <div class="control-group">
+                        <label>Entry Date</label>
+                        <input type="date" id="filter-entry-date">
+                    </div>
+                    <div class="control-group">
+                        <label>Exit Date</label>
+                        <input type="date" id="filter-exit-date">
+                    </div>
+                    <button id="btn-clear-filters" class="btn-secondary" title="Clear Filters">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="data-loader" class="hidden" style="text-align: center; padding: 20px; color: #1e4f73;">
+                <i class="fas fa-spinner fa-spin"></i> Fetching movement data...
+            </div>
+            
+            <div id="table-container" class="data-card">
+                <div class="table-responsive">
+                    <table class="movement-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Vehicle No</th>
+                                <th>Driver Name</th>
+                                <th>Location & Slot</th>
+                                <th>Booked For</th>
+                                <th>Entry Time</th>
+                                <th>Exit Time</th>
+                                <th>Fare (₹)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="movement-tbody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="dashboard-footer">
+                <span><strong>Developed by BATCH-30</strong></span>
+                <span>&copy; 2026 Parking Portal System</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="driver-modal" class="modal-overlay hidden">
+        <div class="modal-box profile-modal">
+            
+            <div class="modal-header">
+                <h3><i class="fas fa-address-card"></i> Driver Profile</h3>
+                <button id="close-driver-modal" class="btn-close">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div id="driver-loader" class="hidden" style="text-align:center; padding: 20px; background: white; border-radius: 12px;">
+                    <i class="fas fa-spinner fa-spin"></i> Fetching details...
+                </div>
+                
+                <div id="driver-profile-content">
+                    <div class="profile-header">
+                        <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <h2 id="prof-name">User Name</h2>
+                            <p id="prof-role">USER</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-grid">
+                        <div class="prof-item">
+                            <span>Email Address</span>
+                            <strong id="prof-email">N/A</strong>
+                        </div>
+                        <div class="prof-item">
+                            <span>Phone Number</span>
+                            <strong id="prof-phone">N/A</strong>
+                        </div>
+                        <div class="prof-item">
+                            <span>Aadhaar No</span>
+                            <strong id="prof-aadhaar">N/A</strong>
+                        </div>
+                        <div class="prof-item">
+                            <span>E-Wallet Balance</span>
+                            <strong id="prof-wallet" style="color: #10b981;">₹ 0.00</strong>
+                        </div>
+                        <div class="prof-item full-width">
+                            <span>Full Address</span>
+                            <strong id="prof-address">Address not provided</strong>
+                        </div>
+                        <div class="prof-item full-width">
+                            <span>Account Created</span>
+                            <strong id="prof-created">N/A</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/components.js"></script>
+    <script type="module" src="js/parking-data.js"></script>
+</body>
+</html>

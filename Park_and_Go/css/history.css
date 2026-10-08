@@ -1,0 +1,162 @@
+/* css/history.css */
+.hidden { display: none !important; }
+
+/* ==========================================
+   SEARCH & FILTER CONTROLS
+   ========================================== */
+.controls-card {
+    background: white; border-radius: 16px; padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0; margin-top: 20px;
+    display: flex; flex-wrap: wrap; gap: 20px;
+    justify-content: space-between; align-items: center;
+}
+.filter-wrapper { display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end; }
+.control-group { display: flex; flex-direction: column; flex: 1; min-width: 120px; }
+.control-group label { font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 5px; text-transform: uppercase; }
+.control-group input, .control-group select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 0.9rem; outline: none; background: white; }
+.control-group input:focus, .control-group select:focus { border-color: #1e4f73; box-shadow: 0 0 0 3px rgba(30, 79, 115, 0.1); }
+.search-group { flex: 2; min-width: 200px; flex-direction: row; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 15px; }
+.search-group:focus-within { border-color: #1e4f73; background: white; box-shadow: 0 0 0 3px rgba(30, 79, 115, 0.1); }
+.search-group i { color: #94a3b8; }
+.search-group input { border: none; background: transparent; width: 100%; box-shadow: none !important; }
+#btn-clear-filters { background: #f1f5f9; color: #64748b; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; height: 40px; }
+#btn-clear-filters:hover { background: #fee2e2; color: #ef4444; }
+
+/* ==========================================
+   PREMIUM TABLE UI
+   ========================================== */
+.history-card { background: white; border-radius: 16px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; overflow: hidden; margin-top: 20px; }
+.table-responsive { width: 100%; overflow-x: auto; max-height: 60vh; overflow-y: auto; }
+.history-table { width: 100%; min-width: 800px; border-collapse: collapse; text-align: left; }
+.history-table th { position: sticky; top: 0; background: #f8fafc; color: #64748b; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 16px 20px; border-bottom: 2px solid #e2e8f0; z-index: 10; }
+.history-table td { padding: 16px 20px; font-size: 0.9rem; color: #1e293b; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+.history-table tbody tr:hover { background: #f8fafc; }
+
+.mono-text { font-family: 'Monaco', monospace; color: #1e4f73; background: #e0f2fe; padding: 3px 6px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.empty-container { text-align: center; padding: 60px 20px; background: white; border-radius: 16px; border: 1px dashed #cbd5e1; margin-top: 20px; }
+
+/* Buttons & Badges */
+.btn-view { background: #f1f5f9; color: #1e4f73; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+.btn-view:hover { background: #1e4f73; color: white; }
+.status-badge { padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+
+/* ==========================================
+   MODAL & QR DESIGN
+   ========================================== */
+.modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 15px; }
+.modal-box { background: white; width: 100%; max-width: 400px; border-radius: 20px; padding: 25px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); max-height: 90vh; overflow-y: auto; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
+.modal-header h3 { margin: 0; color: #1e293b; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
+.btn-close-x { background: transparent; border: none; font-size: 1.5rem; color: #64748b; cursor: pointer; transition: 0.2s; padding: 0; }
+.btn-close-x:hover { color: #ef4444; }
+
+.detail-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #e2e8f0; }
+.detail-row span { color: #64748b; font-size: 0.85rem; font-weight: bold; }
+.detail-row strong { color: #1e293b; font-size: 0.9rem; text-align: right; }
+
+.qr-container { text-align: center; margin-top: 20px; padding: 15px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; }
+.qr-frame { background: white; padding: 10px; border-radius: 12px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.qr-frame img { width: 140px; height: 140px; display: block; }
+
+.modal-footer { margin-top: 20px; display: flex; gap: 10px; }
+.btn-danger { flex: 1; background: #fee2e2; color: #ef4444; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.btn-danger:hover { background: #ef4444; color: white; }
+.btn-primary { width: 100%; background: #1e4f73; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; text-align: center; }
+
+/* Thank You Overlay */
+.thank-you-box { background: white; width: 100%; max-width: 350px; border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.success-icon { font-size: 3.5rem; color: #10b981; margin-bottom: 15px; }
+.thank-you-box h2 { color: #1e293b; margin: 0 0 10px 0; font-size: 1.5rem; }
+.thank-you-box p { color: #64748b; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+@keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+   ========================================== */
+@media (max-width: 768px) {
+    .controls-card { flex-direction: column; align-items: stretch; padding: 15px; }
+    .filter-wrapper { flex-direction: column; align-items: stretch; }
+    #btn-clear-filters { margin-top: 5px; }
+}
+/* APPEND TO css/history.css */
+
+/* Desktop Display Defaults */
+@media (min-width: 769px) {
+    .hidden-desktop { display: none !important; }
+}
+
+.btn-secondary-outline {
+    background: transparent;
+    color: #1e4f73;
+    border: 2px solid #1e4f73;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-secondary-outline:active { background: #e0f2fe; }
+
+/* ==========================================
+   MOBILE RESPONSIVENESS (Under 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    .hidden-mobile { display: none !important; }
+    
+    /* Toggle Filters Logic */
+    .collapsed-mobile { display: none !important; }
+    .mobile-filter-header { display: flex; justify-content: flex-end; margin-bottom: 15px; margin-top: 10px; }
+    
+    .controls-card { flex-direction: column; align-items: stretch; padding: 15px; }
+    .filter-wrapper { flex-direction: column; align-items: stretch; }
+    #btn-clear-filters { margin-top: 5px; }
+
+    /* Mobile Cards UI (Inspired by user reference) */
+    #mobile-cards-container { margin-top: 15px; }
+    
+    .mobile-booking-card {
+        background: white; 
+        border-radius: 12px; 
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        border: 1px solid #e2e8f0;
+        margin-bottom: 15px;
+    }
+    
+    .mobile-booking-card .card-header {
+        display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 2px solid #f1f5f9; 
+        padding-bottom: 12px; margin-bottom: 12px;
+    }
+
+    .mobile-booking-card .card-row {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 0; 
+        border-bottom: 1px dashed #f1f5f9;
+    }
+    .mobile-booking-card .card-row:last-child { border-bottom: none; padding-bottom: 0; }
+    
+    .mobile-booking-card .card-label { 
+        font-size: 0.75rem; 
+        color: #64748b; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.5px;
+    }
+    
+    .mobile-booking-card .card-value { 
+        font-size: 0.95rem; 
+        color: #1e293b; 
+        font-weight: 600; 
+        text-align: right; 
+    }
+
+    /* Make the View QR button full width on mobile */
+    .mobile-booking-card .btn-view {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        margin-top: 10px;
+    }
+}

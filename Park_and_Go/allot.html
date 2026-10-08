@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gate Control - Park And GO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/allot.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    
+    <div class="main-content">
+        <div id="topbar-container"></div>
+        
+        <div class="content-area allot-area">
+            
+            <div id="popup" class="toast-popup">Message</div>
+
+            <div id="scan-idle-state" class="idle-container">
+                <div class="idle-header">
+                    <h2>Gate Scanner</h2>
+                    <p>Ready to process vehicle entry and exit.</p>
+                </div>
+                <button id="start-scan-btn" class="huge-scan-btn">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Tap to Scan QR</span>
+                </button>
+            </div>
+
+            <div id="verification-result" class="verify-card hidden">
+                <div class="verify-header">
+                    <h3><i class="fas fa-check-circle" style="color:#10b981;"></i> Booking Verified</h3>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item"><span>Current Status</span><strong id="v-status" class="status-badge">-</strong></div>
+                    <div class="info-item"><span>Vehicle No</span><strong id="v-vehicle">-</strong></div>
+                    <div class="info-item"><span>Slot Assigned</span><strong id="v-slot" style="color:#1e4f73;">-</strong></div>
+                    <div class="info-item"><span>Driver Name</span><strong id="v-driver">-</strong></div>
+                </div>
+
+                <div id="fare-calculation" class="fare-display hidden">
+                    <div class="fare-row"><span>Duration:</span> <strong id="v-duration">0</strong> mins</div>
+                    <div class="fare-row total"><span>Total Fare:</span> <strong id="v-fare">₹ 0</strong></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btn-cancel-scan" class="btn-secondary">Cancel</button>
+                    <button id="confirm-allotment" class="btn-primary">Confirm Action</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="scanner-wrapper" class="fullscreen-scanner hidden">
+        <div class="scanner-header">
+            <h3>Align QR Code within frame</h3>
+            <button id="stop-scan-btn" class="btn-close-scanner"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="reader" class="scanner-reader"></div>
+        <div id="scanner-error-msg" class="scan-error-toast hidden"></div>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/components.js"></script>
+    <script type="module" src="js/allot.js"></script>
+</body>
+</html>

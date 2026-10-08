@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Managers - Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/manage-managers.css"> </head>
+<body>
+  
+  <div id="sidebar-container"></div>
+  
+  <div class="main-content">
+    <div id="topbar-container"></div>
+    
+    <div id="manager-portal-wrapper" class="content-area">
+      <div class="welcome-section">
+        <h2>Manager Management</h2>
+        <p>Register and supervise facility managers for your parking complexes.</p>
+      </div>
+
+      <div class="table-card mgmt-card">
+        <div class="card-header mgmt-header">
+          <h3><i class="fas fa-user-tie"></i> Current Facility Managers</h3>
+          <button class="btn-primary-action" id="show-registration-btn">
+            <i class="fas fa-plus"></i> Create New Manager
+          </button>
+        </div>
+        <div class="table-responsive table-container">
+          <table class="data-table mgmt-table">
+            <thead>
+              <tr>
+                <th>Manager ID</th>
+                <th>Name</th>
+                <th>Complex Name</th>
+                <th>Capacity</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="manager-list-body">
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="registration-overlay" class="mgmt-overlay hidden">
+        <div class="mgmt-modal animate-slide-up">
+          <div class="mgmt-modal-header">
+            <h3>Register New Manager</h3>
+            <button class="close-overlay" id="close-reg-btn">&times;</button>
+          </div>
+          <form id="manager-reg-form">
+            <div class="mgmt-grid">
+               <div class="field"><label>First Name</label><input type="text" id="reg-fname" required></div>
+               <div class="field"><label>Last Name</label><input type="text" id="reg-lname" required></div>
+               <div class="field"><label>Aadhaar (12 Digits)</label><input type="text" id="reg-aadhaar" pattern="\d{12}" required></div>
+               <div class="field"><label>Email ID</label><input type="email" id="reg-email" required></div>
+               <div class="field"><label>Mobile (Indian)</label><input type="tel" id="reg-mobile" pattern="[6-9]\d{9}" required></div>
+               <div class="field"><label>Complex Name</label><input type="text" id="reg-complex" required></div>
+            </div>
+
+            <h4 class="sub-title"><i class="fas fa-map-marker-alt"></i> Complex Address & Timing</h4>
+            <div class="mgmt-grid">
+               <div class="field"><label>State</label><input type="text" id="reg-state" value="Andhra Pradesh" required></div>
+               <div class="field"><label>District</label><input type="text" id="reg-district" required></div>
+               <div class="field"><label>City/Village</label><input type="text" id="reg-village" required></div>
+               <div class="field"><label>Door Number</label><input type="text" id="reg-door" required></div>
+               <div class="field"><label>Open Time</label><input type="time" id="reg-open" required></div>
+               <div class="field"><label>Close Time</label><input type="time" id="reg-close" required></div>
+            </div>
+
+            <h4 class="sub-title"><i class="fas fa-parking"></i> Slot Configuration</h4>
+            <div class="mgmt-grid">
+               <div class="field"><label>Slot Prefix (e.g. SVG-01)</label><input type="text" id="reg-prefix" placeholder="SVG" required></div>
+               <div class="field"><label>Primary Slots (Total)</label><input type="number" id="reg-slot-qty" min="1" required></div>
+            </div>
+
+            <div class="mgmt-grid">
+               <div class="field"><label>Password</label><input type="password" id="reg-pass" required></div>
+               <div class="field"><label>Confirm Password</label><input type="password" id="reg-confirm" required></div>
+            </div>
+            <button type="submit" class="submit-full-btn" id="reg-submit-btn">Register Manager & Send Verification</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="details-overlay" class="mgmt-overlay hidden">
+          <div class="mgmt-modal" id="details-content">
+              </div>
+      </div>
+
+    </div>
+
+    <div class="dashboard-footer">
+      <span><strong>Developed by LALSA COMPUTERS & BATCH-30</strong></span>
+      <span>&copy; 2026 Parking Portal System</span>
+    </div>
+  </div>
+
+  <div id="overflow-notification" class="overflow-msg"></div>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/manage-managers.js"></script>
+</body>
+</html>

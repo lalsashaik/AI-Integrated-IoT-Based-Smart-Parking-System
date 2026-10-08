@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Settings - Parking Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/profile-settings.css"> </head>
+<body>
+  
+  <div id="sidebar-container"></div>
+<div class="main-content">
+  <div id="topbar-container"></div>
+  
+  <div class="content-area">
+    <div class="welcome-section">
+      <h2>Account & Profile Settings</h2>
+      <p>Manage your personal information and system preferences.</p>
+    </div>
+
+    <div id="profile-loader" style="text-align: center; padding: 40px; color: var(--primary-blue);">
+      <i class="fas fa-spinner fa-spin fa-2x"></i><br>Loading profile data...
+    </div>
+
+    <div id="save-status" class="status-msg"></div>
+
+    <form id="user-profile-form" class="form-card hidden animate-slide-up">
+      <div class="card-header">
+        <h3><i class="fas fa-user"></i> Personal Information</h3>
+      </div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div class="input-group"><label>First Name</label><input type="text" id="prof-fname" required></div>
+          <div class="input-group"><label>Last Name</label><input type="text" id="prof-lname" required></div>
+          <div class="input-group"><label>Email Address</label><input type="email" id="prof-email" readonly style="background:#f8fafc; cursor:not-allowed;"></div>
+          <div class="input-group"><label>Mobile Number</label><input type="tel" id="prof-mobile" required></div>
+          <div class="input-group"><label>Date of Birth</label><input type="date" id="prof-dob" required></div>
+          <div class="input-group"><label>Aadhaar Number</label><input type="text" id="prof-aadhaar" required></div>
+          <div class="input-group"><label>Vehicle Number</label><input type="text" id="prof-vehicle" style="text-transform: uppercase;"></div>
+        </div>
+
+        <h4 style="margin: 25px 0 15px; color: var(--primary-blue); border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+          <i class="fas fa-map-marker-alt"></i> Address Details
+        </h4>
+        <div class="grid-2">
+          <div class="input-group"><label>State</label><input type="text" id="prof-state" required></div>
+          <div class="input-group"><label>District</label><input type="text" id="prof-district" required></div>
+          <div class="input-group"><label>City/Village</label><input type="text" id="prof-village" required></div>
+          <div class="input-group"><label>Pincode</label><input type="text" id="prof-pincode" required></div>
+        </div>
+
+        <button type="submit" class="btn-pay" id="btn-save-user" style="width:100%; margin-top: 25px;">
+          <i class="fas fa-save"></i> Save Profile Updates
+        </button>
+      </div>
+    </form>
+
+    <form id="manager-profile-form" class="form-card hidden animate-slide-up" style="border-top: 5px solid #10b981;">
+      <div class="card-header">
+        <h3><i class="fas fa-user-tie"></i> Facility Manager Profile</h3>
+      </div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div class="input-group"><label>First Name</label><input type="text" id="mgr-fname" readonly style="background:#f8fafc; font-weight:bold; color:#000000;"></div>
+          <div class="input-group"><label>Last Name</label><input type="text" id="mgr-lname" readonly style="background:#f8fafc; font-weight:bold; color:#000000;"></div>
+          <div class="input-group"><label>Email Address</label><input type="email" id="mgr-email" readonly style="background:#f8fafc; cursor:not-allowed;"></div>
+          <div class="input-group"><label>Mobile Number</label><input type="tel" id="mgr-mobile" required></div>
+          <div class="input-group"><label>Aadhaar Number</label><input type="text" id="mgr-aadhaar" readonly style="background:#f8fafc; font-weight:bold; color:#b91010;"></div>
+          <div class="input-group"><label>Manager ID</label><input type="text" id="mgr-id" readonly style="background:#f8fafc; font-weight:bold; color:#10b981;"></div>
+        </div>
+
+        <h4 style="margin: 25px 0 15px; color: #10b981; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+          <i class="fas fa-building"></i> Assigned Complex Details
+        </h4>
+        <div class="grid-2">
+          <div class="input-group"><label>Complex Name</label><input type="text" id="mgr-complex-name" required></div>
+          <div class="input-group"><label>Slot Prefix</label><input type="text" id="mgr-prefix" required></div>
+          <div class="input-group"><label>Total Capacity (Slots)</label><input type="number" id="mgr-slots" required></div>
+          <div class="input-group"><label>Operating Hours</label><input type="text" id="mgr-timings" required></div>
+        </div>
+
+        <h4 style="margin: 25px 0 15px; color: #10b981; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+          <i class="fas fa-map-marked-alt"></i> Complex Address
+        </h4>
+        <div class="grid-2">
+          <div class="input-group"><label>State</label><input type="text" id="mgr-state" required></div>
+          <div class="input-group"><label>District</label><input type="text" id="mgr-district" required></div>
+          <div class="input-group"><label>City/Village</label><input type="text" id="mgr-village" required></div>
+          <div class="input-group"><label>Door Number</label><input type="text" id="mgr-door" required></div>
+        </div>
+
+        <button type="submit" class="btn-pay" id="btn-save-mgr" style="width:100%; margin-top: 25px; background: #10b981;">
+          <i class="fas fa-save"></i> Save Manager Settings
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/profilesettings.js"></script>
+</body>
+</html>

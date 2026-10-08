@@ -1,0 +1,121 @@
+/* css/allot.css */
+
+.hidden { display: none !important; }
+
+/* Center the content vertically and horizontally */
+.allot-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Adjusted for mobile headers */
+    min-height: calc(100dvh - 80px); /* Dynamic viewport for modern mobile browsers */
+    padding: 15px;
+}
+
+/* ==========================================
+   IDLE STATE (Clean UI)
+   ========================================== */
+.idle-container { 
+    text-align: center; 
+    width: 100%; 
+    max-width: 400px; 
+    padding: 20px 10px;
+}
+
+.idle-header h2 { 
+    color: #1e293b; 
+    font-size: clamp(1.5rem, 5vw, 2rem); /* Scales dynamically */
+    margin-bottom: 5px; 
+}
+.idle-header p { 
+    color: #64748b; 
+    margin-bottom: 30px; 
+    font-size: 0.95rem;
+}
+
+.huge-scan-btn {
+    background: linear-gradient(135deg, #1e4f73, #2563eb);
+    color: white; 
+    border: none; 
+    border-radius: 50%; /* Perfect circle */
+    /* Scales perfectly on mobile: takes up 65% of screen width, max 240px */
+    width: min(65vw, 240px); 
+    height: min(65vw, 240px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; 
+    margin: 0 auto; 
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(30, 79, 115, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Touch feedback for mobile */
+.huge-scan-btn:active { transform: scale(0.95); }
+.huge-scan-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 45px rgba(30, 79, 115, 0.45); }
+
+.huge-scan-btn i { font-size: clamp(3.5rem, 12vw, 5rem); }
+.huge-scan-btn span { font-size: clamp(0.9rem, 3.5vw, 1.2rem); font-weight: 700; letter-spacing: 0.5px; }
+
+/* ==========================================
+   FULL SCREEN SCANNER
+   ========================================== */
+.fullscreen-scanner {
+    position: fixed; inset: 0; background: #000000; z-index: 9999;
+    display: flex; flex-direction: column;
+}
+.scanner-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 20px; background: rgba(0,0,0,0.6); 
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+}
+.scanner-header h3 { color: white; margin: 0; font-size: 0.9rem; font-weight: normal; }
+.btn-close-scanner { background: rgba(255,255,255,0.2); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+.scanner-reader { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+/* Force video to fill mobile screen properly */
+.scanner-reader video { object-fit: cover !important; width: 100vw !important; height: 100vh !important; height: 100dvh !important; }
+
+/* ==========================================
+   VERIFICATION RESULT CARD
+   ========================================== */
+.verify-card {
+    background: white; width: 100%; max-width: 450px;
+    border-radius: 24px; padding: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e2e8f0;
+    animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes slideUp { from { transform: translateY(40px) scale(0.95); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+
+.verify-header { text-align: center; margin-bottom: 20px; border-bottom: 2px dashed #f1f5f9; padding-bottom: 15px; }
+.verify-header h3 { margin: 0; font-size: 1.3rem; color: #1e293b; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.info-item { background: #f8fafc; padding: 12px; border-radius: 12px; display: flex; flex-direction: column; }
+.info-item span { font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 3px; }
+.info-item strong { font-size: 1rem; color: #1e293b; word-break: break-word; }
+
+.status-badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem !important; }
+
+.fare-display { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+.fare-row { display: flex; justify-content: space-between; margin-bottom: 8px; color: #881337; font-size: 0.95rem; }
+.fare-row.total { font-weight: 800; font-size: 1.2rem; border-top: 1px dashed #fda4af; padding-top: 10px; margin-bottom: 0; }
+
+.action-buttons { display: flex; gap: 10px; }
+.btn-primary, .btn-secondary { flex: 1; padding: 14px 10px; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; transition: 0.2s; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; text-align: center; }
+.btn-secondary { background: #f1f5f9; color: #64748b; }
+.btn-secondary:active { background: #e2e8f0; }
+
+/* Toast Messages */
+.toast-popup { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1e293b; color: white; padding: 12px 25px; border-radius: 30px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.25); z-index: 10000; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 90%; max-width: 350px; text-align: center; }
+.toast-popup.show { transform: translateX(-50%) translateY(0); }
+.scan-error-toast { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: #ef4444; color: white; padding: 10px 15px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; z-index: 10001; width: 90%; text-align: center; }
+
+/* ==========================================
+   MOBILE SPECIFIC TWEAKS (Under 400px wide)
+   ========================================== */
+@media (max-width: 400px) {
+    .verify-card { padding: 20px 15px; }
+    .action-buttons { flex-direction: column; } /* Stacks buttons on extremely narrow screens */
+    .btn-primary, .btn-secondary { width: 100%; padding: 12px; }
+}
